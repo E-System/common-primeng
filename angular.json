@@ -1,0 +1,148 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "bcac78ec-ebb0-4c9f-9a22-c85154a65929"
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "common-primeng": {
+      "projectType": "library",
+      "root": "projects/common-primeng",
+      "sourceRoot": "projects/common-primeng/src",
+      "prefix": "esp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/common-primeng/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/common-primeng/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/common-primeng/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/common-primeng/src/test.ts",
+            "tsConfig": "projects/common-primeng/tsconfig.spec.json",
+            "karmaConfig": "projects/common-primeng/karma.conf.js"
+          }
+        }
+      }
+    },
+    "common-primeng-test": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/common-primeng-test",
+      "sourceRoot": "projects/common-primeng-test/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/common-primeng-test",
+            "index": "projects/common-primeng-test/src/index.html",
+            "main": "projects/common-primeng-test/src/main.ts",
+            "polyfills": "projects/common-primeng-test/src/polyfills.ts",
+            "tsConfig": "projects/common-primeng-test/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/common-primeng-test/src/favicon.ico",
+              "projects/common-primeng-test/src/assets"
+            ],
+            "styles": [
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "projects/common-primeng-test/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/common-primeng-test/src/environments/environment.ts",
+                  "with": "projects/common-primeng-test/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "common-primeng-test:build:production"
+            },
+            "development": {
+              "browserTarget": "common-primeng-test:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "common-primeng-test:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/common-primeng-test/src/test.ts",
+            "polyfills": "projects/common-primeng-test/src/polyfills.ts",
+            "tsConfig": "projects/common-primeng-test/tsconfig.spec.json",
+            "karmaConfig": "projects/common-primeng-test/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/common-primeng-test/src/favicon.ico",
+              "projects/common-primeng-test/src/assets"
+            ],
+            "styles": [
+              "projects/common-primeng-test/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "common-primeng"
+}

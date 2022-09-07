@@ -1,0 +1,34 @@
+<ng-template *ngIf="filterTemplate" pTemplate="right" [ngTemplateOutlet]="filterTemplate"></ng-template>
+
+<ng-template [ngIf]="topbarTemplate" [ngIfElse]="defaultTopbar" [ngTemplateOutlet]="topbarTemplate"></ng-template>
+<ng-template #defaultTopbar>
+  <p-toolbar styleClass="mb-4">
+    <ng-template pTemplate="left">
+      <div class="my-2">
+        <button pButton pRipple label="Create" class="mr-2" [routerLink]="['create']">
+        </button>
+      </div>
+    </ng-template>
+  </p-toolbar>
+</ng-template>
+<ng-container *ngIf="pager">
+  <h6 class="flex justify-content-end">Total records: {{pager.pager?.total ? pager.pager?.total : 0}}</h6>
+  <p-table [columns]="columns" [value]="pager.data">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th></th>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-instance>
+      <tr>
+        <ng-template [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{instance: instance}"></ng-template>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-paginator [rows]="pager.pager.pageSize" [totalRecords]="pager.pager.total"
+               (onPageChange)="pageChange($event)"></p-paginator>
+</ng-container>

@@ -1,0 +1,41 @@
+.es-input {
+
+  &__label {
+    display: flex;
+    align-items: center;
+    white-space: pre;
+  }
+
+  &__require-mark {
+    color: red;
+  }
+
+  &__info {
+    background: #2196F3;
+    color: #FFFFFF;
+    margin-left: 0.2rem;
+    padding: 2px;
+    border-radius: 50%;
+    font-size: 8px;
+    font-weight: bold;
+    cursor: help;
+  }
+
+  &__value-only {
+    font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    color: #495057;
+    font-weight: 600;
+    background: #f8f9fa;
+    padding: 0.5rem 0.5rem;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    border-radius: 4px;
+    height: auto;
+    min-height: 35px;
+  }
+}
+
+.es-label {
+  font-weight: 700;
+}

@@ -1,0 +1,24 @@
+<div class="es-input">
+  <label [for]="id" class="es-input__label" *ngIf="label">
+    {{label}}
+    <span *ngIf="required" class="es-input__require-mark"> *</span>
+    <i *ngIf="info" class="pi pi-info es-input__info" pTooltip="{{info}}" tooltipPosition="top"></i>
+  </label>
+  <span [ngClass]="{'p-input-icon-right': iconPosition === 'right', 'p-input-icon-left': iconPosition === 'left'}"
+        [ngStyle]="{'width': fullWidth ? '100%': 'auto'}">
+      <i [class]="icon"></i>
+      <input #inputElement *ngIf="!viewMode" pInputText
+             [id]="id"
+             [placeholder]="placeholder"
+             [type]="type"
+             (blur)="innerOnTouched($event)"
+             [(ngModel)]="value"
+             [required]="required"
+             [disabled]="disabled"
+             [readOnly]="readOnly"
+             [ngClass]="{'ng-dirty ng-invalid': isNotValid}"
+             [ngStyle]="{'width': fullWidth ? '100%': 'auto'}"/>
+      <div *ngIf="viewMode" class="es-input__value-only">{{value}}</div>
+    </span>
+</div>
+<small *ngIf="isNotValid && errorText" [id]="id + '-help'" class="p-error block">{{errorText}}</small>

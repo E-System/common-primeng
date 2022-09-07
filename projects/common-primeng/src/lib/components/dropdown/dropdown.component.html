@@ -1,0 +1,34 @@
+<div class="es-input">
+  <label [for]="id" class="es-input__label" *ngIf="label">
+    {{label}}<span *ngIf="required" class="es-input__require-mark"> *</span>
+    <i *ngIf="info" class="pi pi-info es-input__info" pTooltip="{{info}}" tooltipPosition="top"></i>
+  </label>
+  <p-dropdown *ngIf="!viewMode"
+              [id]="id"
+              [placeholder]="placeholder"
+              (blur)="innerOnTouched($event)"
+              [ngModel]="value"
+              (ngModelChange)="onModelChangeValue($event)"
+              [appendTo]="appendTo"
+              [options]="options"
+              [optionLabel]="optionLabel"
+              [filter]="filter"
+              [filterBy]="filterBy"
+              [disabled]="disabled"
+              [required]="required"
+              [optionValue]="optionValue"
+              (onChange)="onChangeValue($event)"
+              [ngClass]="{'ng-dirty ng-invalid': isNotValid}"
+              [style]="style">
+    <ng-template *ngIf="selectedItemTemplate" pTemplate="selectedItem">
+      <ng-template [ngTemplateOutlet]="selectedItemTemplate" [ngTemplateOutletContext]="{item: value}"></ng-template>
+    </ng-template>
+    <ng-template *ngIf="itemTemplate" let-item pTemplate="item">
+      <ng-template [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{item}"></ng-template>
+    </ng-template>
+  </p-dropdown>
+  <div *ngIf="viewMode && !linkViewMode" class="es-input__value-only">{{getValueLabel()}}</div>
+  <div *ngIf="viewMode && linkViewMode" class="es-input__value-only"><a
+    [routerLink]="linkViewMode">{{getValueLabel()}}</a>
+  </div>
+</div>
