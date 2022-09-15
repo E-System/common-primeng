@@ -1,2 +1,91 @@
-<esp-input label="This input" info="this innnnnfooooo" icon="pi pi-pencil" [(ngModel)]="value"></esp-input>
+<esp-calendar id="calendar"
+              [(ngModel)]="calendarValue"
+              label="Calendar"
+              info=" info"
+              [showIcon]="true"
+              [fullWidth]="true"
+              [viewMode]="false"></esp-calendar>
+{{calendarValue}}
 
+<hr/>
+
+<esp-chips id="chips"
+           [(ngModel)]="chipsValue"
+           label="Chips"
+           info="info"
+           [fullWidth]="true"
+           [viewMode]="false"></esp-chips>
+{{chipsValue}}
+
+<hr/>
+
+<esp-dropdown id="dropdown"
+              [(ngModel)]="dropdownValue"
+              [options]="dropdownOptions"
+              optionLabel="name"
+              optionValue="name"
+              label="Dropdown"
+              info="info"
+              [fullWidth]="true"
+              [viewMode]="false">
+</esp-dropdown>
+
+{{dropdownValue}}
+
+<esp-input id="input"
+           [(ngModel)]="inputValue"
+           label="Input"
+           info="info"
+           [fullWidth]="true"
+           [viewMode]="false"></esp-input>
+
+{{inputValue}}
+
+<hr/>
+
+<esp-input-mask id="inputMask"
+                [(ngModel)]="inputMaskValue"
+                label="InputMask"
+                info="info"
+                [mask]="'+1 (999) 999 99-99'"
+                [fullWidth]="true"
+                [viewMode]="false"></esp-input-mask>
+{{inputMaskValue}}
+
+<hr/>
+
+<esp-input-number id="inputNumber"
+                  [(ngModel)]="inputNumberValue"
+                  label="InputNumber"
+                  info="info"
+                  [min]="1"
+                  [max]="10000"
+                  [multiplier]="100"
+                  currency="USD"
+                  mode="currency"
+                  [fullWidth]="true"
+                  [viewMode]="false"></esp-input-number>
+{{inputNumberValue}}
+
+<hr/>
+
+<esp-textarea id="textarea"
+              [(ngModel)]="textareaValue"
+              label="Textarea"
+              info="info"
+              [fullWidth]="true"
+              [viewMode]="false"></esp-textarea>
+{{textareaValue}}
+
+<hr/>
+
+<esp-common-table [columns]="cols" [pager]="pager">
+  <ng-template pTemplate="body" let-instance="instance">
+    <td>
+      {{instance.id}}
+    </td>
+    <td>
+      {{instance.name}}
+    </td>
+  </ng-template>
+</esp-common-table>

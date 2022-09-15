@@ -1,0 +1,31 @@
+<esp-base-element [id]="id" [label]="label" [required]="required" [info]="info" [errorText]="errorText"
+                  [textAlign]="textAlign" [(ngModel)]="value">
+  <p-inputNumber *ngIf="!viewMode"
+                 [id]="id"
+                 [placeholder]="placeholder"
+                 (blur)="innerOnTouched($event)"
+                 [(ngModel)]="value"
+                 [required]="required"
+                 [mode]="mode"
+                 [showButtons]="showButtons"
+                 [step]="step"
+                 [min]="min"
+                 [max]="max"
+                 [maxlength]="maxlength"
+                 [disabled]="disabled"
+                 [currency]="currency"
+                 [prefix]="prefix"
+                 [suffix]="suffix"
+                 [minFractionDigits]="minFractionDigits"
+                 [maxFractionDigits]="maxFractionDigits"
+                 [locale]="locale"
+                 [ngClass]="{'ng-dirty ng-invalid': isNotValid}"
+                 [style]="{'width':  fullWidth ? '100%': 'auto'}"
+                 [ngStyle]="{'width': fullWidth ? '100%': 'auto'}">
+  </p-inputNumber>
+  <div *ngIf="viewMode && mode === 'currency'" class="es-input__value-only"><span
+    *ngIf="prefix">{{prefix}}</span>{{value | currency}}{{suffix}}</div>
+  <div *ngIf="viewMode && mode !== 'currency'" class="es-input__value-only"><span
+    *ngIf="prefix">{{prefix}}</span>{{value}}{{suffix}}</div>
+</esp-base-element>
+

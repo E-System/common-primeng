@@ -1,8 +1,4 @@
-<div class="es-input">
-  <label [for]="id" class="es-input__label" *ngIf="label">
-    {{label}}<span *ngIf="required" class="es-input__require-mark"> *</span>
-    <i *ngIf="info" class="pi pi-info es-input__info" pTooltip="{{info}}" tooltipPosition="top"></i>
-  </label>
+<esp-base-element [id]="id" [label]="label" [required]="required" [info]="info" [errorText]="errorText" [value]="value">
   <p-dropdown *ngIf="!viewMode"
               [id]="id"
               [placeholder]="placeholder"
@@ -27,8 +23,7 @@
       <ng-template [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{item}"></ng-template>
     </ng-template>
   </p-dropdown>
-  <div *ngIf="viewMode && !linkViewMode" class="es-input__value-only">{{getValueLabel()}}</div>
-  <div *ngIf="viewMode && linkViewMode" class="es-input__value-only"><a
-    [routerLink]="linkViewMode">{{getValueLabel()}}</a>
+  <div *ngIf="viewMode && !linkViewMode" class="es-input__value-only">{{textValue}}</div>
+  <div *ngIf="viewMode && linkViewMode" class="es-input__value-only"><a [routerLink]="linkViewMode">{{textValue}}</a>
   </div>
-</div>
+</esp-base-element>

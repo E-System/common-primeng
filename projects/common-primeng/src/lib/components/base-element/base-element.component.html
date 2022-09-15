@@ -1,0 +1,11 @@
+<div class="es-input" [ngClass]="{
+       'inputtext-left': textAlign == 'LEFT',
+       'inputtext-center': textAlign == 'CENTER',
+       'inputtext-right': textAlign == 'RIGHT'}">
+  <label [for]="id" class="es-input__label" *ngIf="label">
+    {{label}}<span *ngIf="required" class="es-input__require-mark"> *</span>
+    <i *ngIf="info" class="pi pi-info es-input__info" pTooltip="{{info}}" tooltipPosition="top"></i>
+  </label>
+  <ng-content></ng-content>
+</div>
+<small *ngIf="isNotValid && errorText" [id]="id + '-help'" class="p-error block">{{errorText}}</small>

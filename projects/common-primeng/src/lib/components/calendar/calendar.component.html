@@ -1,0 +1,18 @@
+<esp-base-element [id]="id" [label]="label" [required]="required" [info]="info" [errorText]="errorText" [(ngModel)]="value">
+  <p-calendar *ngIf="!viewMode"
+              [id]="id"
+              [placeholder]="placeholder"
+              (blur)="innerOnTouched($event)"
+              (onSelect)="onSelect($event)"
+              [(ngModel)]="value"
+              [required]="required"
+              [disabled]="disabled"
+              [readonlyInput]="readOnly"
+              [dateFormat]="dateFormat"
+              [ngClass]="{'ng-dirty ng-invalid': isNotValid}"
+              [style]="{'width': fullWidth ? '100%': 'auto'}"
+              [appendTo]="appendTo"
+              [showIcon]="showIcon">
+  </p-calendar>
+  <div *ngIf="viewMode" class="es-input__value-only">{{value | date : dateFormatViewMode}}</div>
+</esp-base-element>

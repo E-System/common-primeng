@@ -14,7 +14,7 @@ import {InputTextModule} from "primeng/inputtext";
 import {TooltipModule} from "primeng/tooltip";
 import {CommonModule} from "@angular/common";
 import {
-  AbstractControl,
+  AbstractControl, ControlContainer,
   ControlValueAccessor,
   FormControl,
   FormGroupDirective,
@@ -26,56 +26,52 @@ import {
 import {PrimeTemplate} from "primeng/api";
 import {DropdownModule} from "primeng/dropdown";
 import {RouterLinkWithHref} from "@angular/router";
+import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
 
 @Component({
   selector: 'esp-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent implements ControlValueAccessor, Validator, OnInit, AfterContentInit {
+export class DropdownComponent extends BaseElementComponent implements Validator, OnInit, AfterContentInit {
 
-  @Input() id: string = '';
-  @Input() label: string = '';
-  @Input() placeholder = '';
-  @Input() fullWidth = false;
-  @Input() required = false;
-  @Input() disabled: boolean = false;
-  @Input() readOnly: boolean = false;
+
   @Input() filter: boolean = false;
+
   @Input() filterBy: string  = '';
-  @Input() errorText: string | null = null;
-  @Input() style: any = {};
-  @Input() viewMode: boolean = false;
+
   @Input() linkViewMode: string | null = null;
-  @Input() info: string | null = null;
+
   @Input() selectFirst: boolean = true;
+
   @Input() options: any[] = [];
+
   @Input() optionLabel: string = 'name';
+
   @Input() optionValue: string = '';
+
   @Input() optionKey: string | null = null;
+
   @Input() appendTo: string | null = null;
 
-  @Output('valueChange') emitterValue: EventEmitter<any> = new EventEmitter<any>();
-  @Output('changeInput') emitterChange: EventEmitter<any> = new EventEmitter<any>();
   @Output('onChange') emitterOnChange: EventEmitter<any> = new EventEmitter<any>();
 
   @ContentChildren(PrimeTemplate) templates: QueryList<any> | null = null;
 
-  _value: any;
-  _disabled = false;
-  styleClass = {};
-  formControl!: FormControl;
   selectedItemTemplate: TemplateRef<any> | null = null;
+
   itemTemplate: TemplateRef<any> | null = null;
 
-  constructor(public ngControl: NgControl,
-              @Optional() public parentFormDirective: FormGroupDirective,
-              @Optional() public ngForm: NgForm,
-              private errorStateMatcher: ErrorStateMatcher) {
-    this.ngControl.valueAccessor = this;
+  constructor(@Optional() protected override controlContainer: ControlContainer,
+              @Optional() protected override parentFormDirective: FormGroupDirective,
+              @Optional() protected override ngForm: NgForm,
+              protected override ngControl: NgControl,
+              protected override errorStateMatcher: ErrorStateMatcher) {
+    super(controlContainer, parentFormDirective, ngForm, ngControl, errorStateMatcher);
   }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
+    super.ngOnInit();
     setTimeout(() => {
       this.formControl = this.ngControl.control as FormControl;
     });
@@ -98,10 +94,6 @@ export class DropdownComponent implements ControlValueAccessor, Validator, OnIni
     });
   }
 
-  get value() {
-    return this._value;
-  }
-
   validate(control: AbstractControl): ValidationErrors | null {
     if (this.required) {
       if (control.value && this.optionKey) {
@@ -113,41 +105,14 @@ export class DropdownComponent implements ControlValueAccessor, Validator, OnIni
     return null;
   }
 
-  set value(val: any) {
+  override set value(val: any) {
     this._value = val;
     if (this.selectFirst) {
       this.onChange(val);
     }
   }
 
-  onChange(_: any) {
-  }
-
-  onTouched(_: any) {
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  writeValue(value: any): void {
-    this._value = value;
-  }
-
-  innerOnTouched($event: FocusEvent) {
-    this.formControl.markAsTouched({onlySelf: true});
-    this.onTouched($event);
-  }
-
-  get isNotValid() {
-    return this.errorStateMatcher.isErrorState(this.formControl, this.parentFormDirective || this.ngForm);
-  }
-
-  getValueLabel() {
+  get textValue() {
     if (this.optionValue) {
       return this.options?.find(v => v[this.optionValue ? this.optionValue : 0] == this.value)?.[this.optionLabel];
     }
@@ -163,7 +128,6 @@ export class DropdownComponent implements ControlValueAccessor, Validator, OnIni
       this.onChange($event);
     }
   }
-
 }
 
 @NgModule({
@@ -176,7 +140,8 @@ export class DropdownComponent implements ControlValueAccessor, Validator, OnIni
     CommonModule,
     FormsModule,
     DropdownModule,
-    RouterLinkWithHref
+    RouterLinkWithHref,
+    EspBaseComponentModule
   ],
   exports: [DropdownComponent]
 })
