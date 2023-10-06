@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, NgModule, OnInit, Optional, Output} from
 import {ControlContainer, FormGroupDirective, FormsModule, NgControl, NgForm} from "@angular/forms";
 import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
 import {CommonModule} from "@angular/common";
-import {RouterLinkWithHref} from "@angular/router";
+import {RouterLink} from "@angular/router";
 import {CalendarModule} from "primeng/calendar";
 import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -52,7 +52,7 @@ export class CalendarComponent extends BaseElementComponent implements OnInit {
     CommonModule,
     FormsModule,
     CalendarModule,
-    RouterLinkWithHref,
+    RouterLink,
     EspBaseComponentModule
   ],
   exports: [CalendarComponent]

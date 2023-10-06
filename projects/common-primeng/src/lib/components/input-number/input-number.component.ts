@@ -11,7 +11,7 @@ import {
   NgControl,
   NgForm
 } from "@angular/forms";
-import {RouterLinkWithHref} from "@angular/router";
+import {RouterLink} from "@angular/router";
 import {InputNumberModule} from "primeng/inputnumber";
 import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
 
@@ -92,7 +92,7 @@ export class InputNumberComponent extends BaseElementComponent implements Contro
     CommonModule,
     FormsModule,
     InputNumberModule,
-    RouterLinkWithHref,
+    RouterLink,
     EspBaseComponentModule
   ],
   exports: [InputNumberComponent]

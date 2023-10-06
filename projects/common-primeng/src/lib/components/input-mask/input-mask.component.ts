@@ -11,7 +11,7 @@ import {
 import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
 import {TooltipModule} from "primeng/tooltip";
 import {CommonModule} from "@angular/common";
-import {RouterLinkWithHref} from "@angular/router";
+import {RouterLink} from "@angular/router";
 import {InputMaskModule} from "primeng/inputmask";
 import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
 
@@ -47,7 +47,7 @@ export class InputMaskComponent extends BaseElementComponent implements OnInit {
     CommonModule,
     FormsModule,
     InputMaskModule,
-    RouterLinkWithHref,
+    RouterLink,
     EspBaseComponentModule
   ],
   exports: [InputMaskComponent]

@@ -11,7 +11,7 @@ import {
   NgControl,
   NgForm
 } from "@angular/forms";
-import {RouterLinkWithHref} from "@angular/router";
+import {RouterLink} from "@angular/router";
 import {ChipsModule} from "primeng/chips";
 import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
 
@@ -45,7 +45,7 @@ export class ChipsComponent extends BaseElementComponent implements OnInit {
     CommonModule,
     FormsModule,
     ChipsModule,
-    RouterLinkWithHref,
+    RouterLink,
     EspBaseComponentModule
   ],
   exports: [ChipsComponent]

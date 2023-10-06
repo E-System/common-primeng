@@ -25,7 +25,7 @@ import {
 } from "@angular/forms";
 import {PrimeTemplate} from "primeng/api";
 import {DropdownModule} from "primeng/dropdown";
-import {RouterLinkWithHref} from "@angular/router";
+import {RouterLink} from "@angular/router";
 import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
 
 @Component({
@@ -140,7 +140,7 @@ export class DropdownComponent extends BaseElementComponent implements Validator
     CommonModule,
     FormsModule,
     DropdownModule,
-    RouterLinkWithHref,
+    RouterLink,
     EspBaseComponentModule
   ],
   exports: [DropdownComponent]

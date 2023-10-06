@@ -17,7 +17,7 @@ import {TooltipModule} from "primeng/tooltip";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {DropdownModule} from "primeng/dropdown";
-import {RouterLink, RouterLinkWithHref} from "@angular/router";
+import { RouterLink } from "@angular/router";
 import {DropdownComponent} from "../dropdown/dropdown.component";
 import {ToolbarModule} from "primeng/toolbar";
 import {TableModule} from "primeng/table";
@@ -79,7 +79,7 @@ export class CommonTableComponent<T> implements OnInit, AfterContentInit {
     CommonAngularModule,
     CommonModule,
     FormsModule,
-    RouterLinkWithHref,
+    RouterLink,
     ToolbarModule,
     TableModule,
     ButtonModule,

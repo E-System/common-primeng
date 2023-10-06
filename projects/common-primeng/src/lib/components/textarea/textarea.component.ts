@@ -10,7 +10,7 @@ import {
 import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
 import {TooltipModule} from "primeng/tooltip";
 import {CommonModule} from "@angular/common";
-import {RouterLinkWithHref} from "@angular/router";
+import {RouterLink} from "@angular/router";
 import {InputTextareaModule} from "primeng/inputtextarea";
 import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
 
@@ -49,7 +49,7 @@ export class TextareaComponent extends BaseElementComponent implements OnInit {
     CommonModule,
     FormsModule,
     InputTextareaModule,
-    RouterLinkWithHref,
+    RouterLink,
     EspBaseComponentModule
   ],
   exports: [TextareaComponent]

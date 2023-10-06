@@ -21,7 +21,7 @@ import {
 import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
 import {TooltipModule} from "primeng/tooltip";
 import {CommonModule} from "@angular/common";
-import {RouterLinkWithHref} from "@angular/router";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'esp-base-element',
@@ -118,7 +118,7 @@ export class BaseElementComponent implements ControlValueAccessor, OnInit {
     TooltipModule,
     CommonModule,
     FormsModule,
-    RouterLinkWithHref
+    RouterLink
   ],
   exports: [
     BaseElementComponent
