@@ -1,6 +1,6 @@
 {
   "name": "common-primeng",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "peerDependencies": {
     "@angular/common": ">=16.2.8",
     "@angular/core": ">=16.2.8"
