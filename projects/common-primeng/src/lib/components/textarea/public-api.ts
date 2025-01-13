@@ -2,4 +2,4 @@
  * Public API Surface of common-primeng
  */
 
-export * from './input-number.component';
+export * from './textarea.component';

@@ -1,14 +1,4 @@
-import {
-  Component,
-  ContentChildren,
-  EventEmitter,
-  Input,
-  NgModule,
-  OnInit,
-  Optional,
-  Output,
-  QueryList
-} from '@angular/core';
+import {Component, Input, NgModule, OnInit, Optional} from '@angular/core';
 import {
   ControlContainer,
   ControlValueAccessor,
@@ -19,14 +9,19 @@ import {
   NgForm
 } from "@angular/forms";
 import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
-import {TooltipModule} from "primeng/tooltip";
-import {CommonModule} from "@angular/common";
+import {Tooltip, TooltipModule} from "primeng/tooltip";
+import {CommonModule, NgClass, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'esp-base-element',
   templateUrl: './base-element.component.html',
-  styleUrls: ['./base-element.component.css']
+  styleUrls: ['./base-element.component.css'],
+  imports: [
+    NgClass,
+    Tooltip,
+    NgIf
+  ]
 })
 export class BaseElementComponent implements ControlValueAccessor, OnInit {
 
@@ -107,22 +102,4 @@ export class BaseElementComponent implements ControlValueAccessor, OnInit {
   get isNotValid() {
     return this.errorStateMatcher.isErrorState(this.formControl, this.lastChildForm);
   }
-}
-
-@NgModule({
-  declarations: [
-    BaseElementComponent
-  ],
-  imports: [
-    CommonAngularModule,
-    TooltipModule,
-    CommonModule,
-    FormsModule,
-    RouterLink
-  ],
-  exports: [
-    BaseElementComponent
-  ]
-})
-export class EspBaseComponentModule {
 }

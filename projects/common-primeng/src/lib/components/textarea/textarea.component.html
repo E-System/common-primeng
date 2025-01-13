@@ -1,7 +1,7 @@
 <esp-base-element [id]="id" [label]="label" [required]="required" [info]="info" [errorText]="errorText"
                   [(ngModel)]="value">
 
-  <textarea *ngIf="!viewMode" pInputTextarea
+  <textarea *ngIf="!viewMode" pTextarea
             [id]="id"
             [placeholder]="placeholder"
             (blur)="innerOnTouched($event)"

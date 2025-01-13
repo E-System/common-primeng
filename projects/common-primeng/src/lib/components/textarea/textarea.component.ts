@@ -1,23 +1,22 @@
-import {Component, EventEmitter, Injector, Input, NgModule, OnInit, Optional, Output} from '@angular/core';
-import {
-  ControlContainer,
-  ControlValueAccessor,
-  FormControl,
-  FormGroupDirective, FormsModule,
-  NgControl,
-  NgForm
-} from "@angular/forms";
-import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
-import {TooltipModule} from "primeng/tooltip";
-import {CommonModule} from "@angular/common";
-import {RouterLink} from "@angular/router";
-import {InputTextareaModule} from "primeng/inputtextarea";
-import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
+import {Component, Input, OnInit, Optional} from '@angular/core';
+import {ControlContainer, FormGroupDirective, FormsModule, NgControl, NgForm} from "@angular/forms";
+import {ErrorStateMatcher} from "es-common-angular";
+import {NgClass, NgIf, NgStyle} from "@angular/common";
+import {BaseElementComponent} from "../base-element/base-element.component";
+import {Textarea} from "primeng/textarea";
 
 @Component({
   selector: 'esp-textarea',
   templateUrl: './textarea.component.html',
-  styleUrls: ['./textarea.component.css']
+  styleUrls: ['./textarea.component.css'],
+  imports: [
+    FormsModule,
+    Textarea,
+    NgClass,
+    NgStyle,
+    BaseElementComponent,
+    NgIf
+  ]
 })
 export class TextareaComponent extends BaseElementComponent implements OnInit {
 
@@ -37,22 +36,4 @@ export class TextareaComponent extends BaseElementComponent implements OnInit {
   override ngOnInit(): void {
     super.ngOnInit();
   }
-}
-
-@NgModule({
-  declarations: [
-    TextareaComponent
-  ],
-  imports: [
-    CommonAngularModule,
-    TooltipModule,
-    CommonModule,
-    FormsModule,
-    InputTextareaModule,
-    RouterLink,
-    EspBaseComponentModule
-  ],
-  exports: [TextareaComponent]
-})
-export class EspTextareaModule {
 }

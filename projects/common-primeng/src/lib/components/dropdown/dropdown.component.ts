@@ -4,34 +4,42 @@ import {
   ContentChildren,
   EventEmitter,
   Input,
-  NgModule,
-  OnInit, Optional,
-  Output, QueryList,
+  OnInit,
+  Optional,
+  Output,
+  QueryList,
   TemplateRef
 } from '@angular/core';
-import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
-import {InputTextModule} from "primeng/inputtext";
-import {TooltipModule} from "primeng/tooltip";
-import {CommonModule} from "@angular/common";
+import {ErrorStateMatcher} from "es-common-angular";
 import {
-  AbstractControl, ControlContainer,
-  ControlValueAccessor,
+  AbstractControl,
+  ControlContainer,
   FormControl,
-  FormGroupDirective,
-  FormsModule,
+  FormGroupDirective, FormsModule,
   NgControl,
-  NgForm, ValidationErrors,
+  NgForm,
+  ValidationErrors,
   Validator
 } from "@angular/forms";
 import {PrimeTemplate} from "primeng/api";
+import {BaseElementComponent} from "../base-element/base-element.component";
 import {DropdownModule} from "primeng/dropdown";
+import {NgClass, NgIf, NgTemplateOutlet} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
 
 @Component({
   selector: 'esp-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+  styleUrls: ['./dropdown.component.scss'],
+  imports: [
+    BaseElementComponent,
+    DropdownModule,
+    NgTemplateOutlet,
+    FormsModule,
+    NgClass,
+    NgIf,
+    RouterLink
+  ]
 })
 export class DropdownComponent extends BaseElementComponent implements Validator, OnInit, AfterContentInit {
 
@@ -128,22 +136,4 @@ export class DropdownComponent extends BaseElementComponent implements Validator
       this.onChange($event);
     }
   }
-}
-
-@NgModule({
-  declarations: [
-    DropdownComponent
-  ],
-  imports: [
-    CommonAngularModule,
-    TooltipModule,
-    CommonModule,
-    FormsModule,
-    DropdownModule,
-    RouterLink,
-    EspBaseComponentModule
-  ],
-  exports: [DropdownComponent]
-})
-export class EspDropdownModule {
 }

@@ -1,24 +1,22 @@
-import {Component, EventEmitter, Injector, Input, NgModule, OnInit, Optional, Output} from '@angular/core';
-import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
-import {TooltipModule} from "primeng/tooltip";
-import {CommonModule} from "@angular/common";
-import {
-  ControlContainer,
-  ControlValueAccessor,
-  FormControl,
-  FormGroupDirective,
-  FormsModule,
-  NgControl,
-  NgForm
-} from "@angular/forms";
-import {RouterLink} from "@angular/router";
-import {ChipsModule} from "primeng/chips";
-import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
+import {Component, OnInit, Optional} from '@angular/core';
+import {ErrorStateMatcher} from "es-common-angular";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {ControlContainer, FormGroupDirective, FormsModule, NgControl, NgForm} from "@angular/forms";
+import {BaseElementComponent} from "../base-element/base-element.component";
+import {AutoComplete} from "primeng/autocomplete";
 
 @Component({
   selector: 'esp-chips',
   templateUrl: './chips.component.html',
-  styleUrls: ['./chips.component.scss']
+  styleUrls: ['./chips.component.scss'],
+  imports: [
+    AutoComplete,
+    FormsModule,
+    NgClass,
+    NgIf,
+    NgForOf,
+    BaseElementComponent
+  ]
 })
 export class ChipsComponent extends BaseElementComponent implements OnInit {
 
@@ -33,22 +31,4 @@ export class ChipsComponent extends BaseElementComponent implements OnInit {
   override ngOnInit(): void {
     super.ngOnInit();
   }
-}
-
-@NgModule({
-  declarations: [
-    ChipsComponent
-  ],
-  imports: [
-    CommonAngularModule,
-    TooltipModule,
-    CommonModule,
-    FormsModule,
-    ChipsModule,
-    RouterLink,
-    EspBaseComponentModule
-  ],
-  exports: [ChipsComponent]
-})
-export class EspChipsModule {
 }

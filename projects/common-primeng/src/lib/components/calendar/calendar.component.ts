@@ -1,16 +1,22 @@
-import {Component, EventEmitter, Input, NgModule, OnInit, Optional, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Optional, Output} from '@angular/core';
 import {ControlContainer, FormGroupDirective, FormsModule, NgControl, NgForm} from "@angular/forms";
-import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
-import {CommonModule} from "@angular/common";
-import {RouterLink} from "@angular/router";
-import {CalendarModule} from "primeng/calendar";
-import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ErrorStateMatcher} from "es-common-angular";
+import {DatePipe, NgClass, NgIf} from "@angular/common";
+import {Calendar} from "primeng/calendar";
+import {BaseElementComponent} from "../base-element/base-element.component";
 
 @Component({
   selector: 'esp-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  styleUrls: ['./calendar.component.scss'],
+  imports: [
+    FormsModule,
+    Calendar,
+    NgIf,
+    DatePipe,
+    NgClass,
+    BaseElementComponent
+  ]
 })
 export class CalendarComponent extends BaseElementComponent implements OnInit {
 
@@ -40,22 +46,4 @@ export class CalendarComponent extends BaseElementComponent implements OnInit {
   onSelect($event: any) {
     this.emitterSelect.emit($event)
   }
-}
-
-@NgModule({
-  declarations: [
-    CalendarComponent
-  ],
-  imports: [
-    CommonAngularModule,
-    BrowserAnimationsModule,
-    CommonModule,
-    FormsModule,
-    CalendarModule,
-    RouterLink,
-    EspBaseComponentModule
-  ],
-  exports: [CalendarComponent]
-})
-export class EspCalendarModule {
 }

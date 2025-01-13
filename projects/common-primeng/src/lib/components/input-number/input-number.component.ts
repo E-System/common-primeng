@@ -1,24 +1,30 @@
-import {Component, EventEmitter, Input, NgModule, OnInit, Optional, Output} from '@angular/core';
-import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
-import {TooltipModule} from "primeng/tooltip";
-import {CommonModule} from "@angular/common";
+import {Component, Input, OnInit, Optional} from '@angular/core';
+import {ErrorStateMatcher} from "es-common-angular";
+import {CurrencyPipe, NgClass, NgIf, NgStyle} from "@angular/common";
 import {
   ControlContainer,
   ControlValueAccessor,
-  FormControl,
   FormGroupDirective,
   FormsModule,
   NgControl,
   NgForm
 } from "@angular/forms";
-import {RouterLink} from "@angular/router";
-import {InputNumberModule} from "primeng/inputnumber";
-import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
+import {InputNumber} from "primeng/inputnumber";
+import {BaseElementComponent} from "../base-element/base-element.component";
 
 @Component({
   selector: 'esp-input-number',
   templateUrl: './input-number.component.html',
-  styleUrls: ['./input-number.component.css']
+  styleUrls: ['./input-number.component.css'],
+  imports: [
+    BaseElementComponent,
+    InputNumber,
+    FormsModule,
+    NgClass,
+    NgStyle,
+    CurrencyPipe,
+    NgIf
+  ]
 })
 export class InputNumberComponent extends BaseElementComponent implements ControlValueAccessor, OnInit {
 
@@ -80,22 +86,4 @@ export class InputNumberComponent extends BaseElementComponent implements Contro
       this.onChange($event);
     }
   }
-}
-
-@NgModule({
-  declarations: [
-    InputNumberComponent
-  ],
-  imports: [
-    CommonAngularModule,
-    TooltipModule,
-    CommonModule,
-    FormsModule,
-    InputNumberModule,
-    RouterLink,
-    EspBaseComponentModule
-  ],
-  exports: [InputNumberComponent]
-})
-export class EspInputNumberModule {
 }

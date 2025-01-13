@@ -1,11 +1,32 @@
 import {Component} from '@angular/core';
 import {DTOPagerResponse} from "es-common-angular/models/dtopager-response";
 import {DTOPager} from "es-common-angular";
+import {FormsModule} from "@angular/forms";
+import {
+  CalendarComponent,
+  ChipsComponent, CommonTableComponent,
+  DropdownComponent,
+  InputComponent,
+  InputMaskComponent,
+  InputNumberComponent,
+  TextareaComponent
+} from "common-primeng";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  imports: [
+    FormsModule,
+    ChipsComponent,
+    CalendarComponent,
+    DropdownComponent,
+    InputComponent,
+    InputMaskComponent,
+    InputNumberComponent,
+    TextareaComponent,
+    CommonTableComponent
+  ]
 })
 export class AppComponent {
   title = 'common-primeng-test';

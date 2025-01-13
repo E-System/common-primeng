@@ -9,3 +9,4 @@ export * from './dropdown/public-api';
 export * from './input/public-api';
 export * from './input-mask/public-api';
 export * from './input-number/public-api';
+export * from './textarea/public-api';

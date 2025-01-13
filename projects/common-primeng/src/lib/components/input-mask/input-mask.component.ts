@@ -1,24 +1,21 @@
-import {Component, EventEmitter, forwardRef, Input, NgModule, OnInit, Optional, Output} from '@angular/core';
-import {
-  ControlContainer,
-  ControlValueAccessor,
-  FormControl,
-  FormGroupDirective,
-  FormsModule, NG_VALUE_ACCESSOR,
-  NgControl,
-  NgForm
-} from "@angular/forms";
-import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
-import {TooltipModule} from "primeng/tooltip";
-import {CommonModule} from "@angular/common";
-import {RouterLink} from "@angular/router";
-import {InputMaskModule} from "primeng/inputmask";
-import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
+import {Component, Input, OnInit, Optional} from '@angular/core';
+import {ControlContainer, FormGroupDirective, FormsModule, NgControl, NgForm} from "@angular/forms";
+import {ErrorStateMatcher} from "es-common-angular";
+import {BaseElementComponent} from "../base-element/base-element.component";
+import {NgClass, NgIf} from "@angular/common";
+import {InputMask} from "primeng/inputmask";
 
 @Component({
   selector: 'esp-input-mask',
   templateUrl: './input-mask.component.html',
-  styleUrls: ['./input-mask.component.scss']
+  styleUrls: ['./input-mask.component.scss'],
+  imports: [
+    BaseElementComponent,
+    NgIf,
+    FormsModule,
+    NgClass,
+    InputMask
+  ]
 })
 export class InputMaskComponent extends BaseElementComponent implements OnInit {
 
@@ -35,22 +32,4 @@ export class InputMaskComponent extends BaseElementComponent implements OnInit {
   override ngOnInit(): void {
     super.ngOnInit();
   }
-}
-
-@NgModule({
-  declarations: [
-    InputMaskComponent
-  ],
-  imports: [
-    CommonAngularModule,
-    TooltipModule,
-    CommonModule,
-    FormsModule,
-    InputMaskModule,
-    RouterLink,
-    EspBaseComponentModule
-  ],
-  exports: [InputMaskComponent]
-})
-export class EspInputMaskModule {
 }

@@ -1,15 +1,22 @@
-import {Component, ElementRef, Input, NgModule, OnInit, Optional, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, Optional, ViewChild} from '@angular/core';
 import {ControlContainer, FormGroupDirective, FormsModule, NgControl, NgForm} from "@angular/forms";
-import {CommonAngularModule, ErrorStateMatcher} from "es-common-angular";
-import {InputTextModule} from "primeng/inputtext";
-import {TooltipModule} from "primeng/tooltip";
-import {CommonModule} from "@angular/common";
-import {BaseElementComponent, EspBaseComponentModule} from "../base-element/base-element.component";
+import {ErrorStateMatcher} from "es-common-angular";
+import {InputText} from "primeng/inputtext";
+import {NgClass, NgIf, NgStyle} from "@angular/common";
+import {BaseElementComponent} from "../base-element/base-element.component";
 
 @Component({
   selector: 'esp-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  styleUrls: ['./input.component.scss'],
+  imports: [
+    BaseElementComponent,
+    FormsModule,
+    NgClass,
+    NgStyle,
+    NgIf,
+    InputText
+  ]
 })
 export class InputComponent extends BaseElementComponent implements OnInit {
 
@@ -56,22 +63,5 @@ export class InputComponent extends BaseElementComponent implements OnInit {
     this._value = value;
     this.oldValue = this._value;
   }
-}
-
-@NgModule({
-  declarations: [
-    InputComponent
-  ],
-  imports: [
-    CommonAngularModule,
-    InputTextModule,
-    TooltipModule,
-    CommonModule,
-    FormsModule,
-    EspBaseComponentModule
-  ],
-  exports: [InputComponent]
-})
-export class EspInputModule {
 }
 

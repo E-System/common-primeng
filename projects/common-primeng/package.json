@@ -1,9 +1,9 @@
 {
   "name": "common-primeng",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "peerDependencies": {
-    "@angular/common": ">=18.2.8",
-    "@angular/core": ">=16.2.8"
+    "@angular/common": ">=19.0.0",
+    "@angular/core": ">=19.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
